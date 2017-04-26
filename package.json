@@ -36,6 +36,7 @@
     "url": "https://github.com/lebretr/sequelize-oracle/issues"
   },
   "dependencies": {
+    "async": "^2.3.0",
     "bluebird": "~2.9.24",
     "depd": "^1.0.1",
     "dottie": "^0.3.1",
