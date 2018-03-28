@@ -1,7 +1,7 @@
 {
   "name": "sequelize-oracle",
   "description": "Multi dialect ORM for Node.JS/io.js",
-  "version": "3.3.2-0.0",
+  "version": "3.3.2-0.1",
   "author": "Lebret Rémi",
   "contributors": [
     {
@@ -22,16 +22,21 @@
     {
       "name": "Mick Hansen",
       "email": "mick.kasper.hansen@gmail.com"
+    },
+    {
+      "name": "Martin Kunft",
+      "email": "martin.kunft@gmail.com"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lebretr/sequelize-oracle.git"
+    "url": "https://github.com/mkunft/sequelize-oracle.git"
   },
   "bugs": {
     "url": "https://github.com/lebretr/sequelize-oracle/issues"
   },
   "dependencies": {
+    "async": "^2.3.0",
     "bluebird": "~2.9.24",
     "depd": "^1.0.1",
     "dottie": "^0.3.1",

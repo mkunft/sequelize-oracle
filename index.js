@@ -98,6 +98,7 @@ var Sequelize=require("./lib/sequelize")
       options.raw = true;
     }
 
+    /*
     if (options.replacements) {
       if (Array.isArray(options.replacements)) {
         sql = Utils.format([sql].concat(options.replacements), this.options.dialect);
@@ -106,7 +107,9 @@ var Sequelize=require("./lib/sequelize")
         sql = Utils.formatNamedParameters(sql, options.replacements, this.options.dialect);
       }
     }
+		*/
 
+    sql = sql.replace(/'(:\w+)'/g, "$1");
     options = Utils._.extend(Utils._.clone(this.options.query), options);
     options = Utils._.defaults(options, {
       logging: this.options.hasOwnProperty('logging') ? this.options.logging : console.log
