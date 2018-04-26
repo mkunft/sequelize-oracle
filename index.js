@@ -60,7 +60,12 @@ var Sequelize=require("./lib/sequelize")
     var sql;
     if(typeof sqlQuery === 'object' && sqlQuery.sql){
       sql=sqlQuery.sql;
-      options.bind=sqlQuery.bind;
+			if (typeof options.bind === 'object') {
+				options.bind.rid = sqlQuery.bind.rid;
+			}
+			else {
+      	options.bind=sqlQuery.bind;
+			}
     }else{
       sql=sqlQuery;
     }
@@ -99,7 +104,7 @@ var Sequelize=require("./lib/sequelize")
     }
 
 		if (sql.match(/'(:\w+)'/)) {
-    	sql = sql.replace(/'(:\w+)'/g, "$1");
+			sql = sql.replace(/'(:\w+)'/g, "$1");
 		}
     else if (options.replacements) {
       if (Array.isArray(options.replacements)) {
@@ -109,7 +114,8 @@ var Sequelize=require("./lib/sequelize")
         sql = Utils.formatNamedParameters(sql, options.replacements, this.options.dialect);
       }
     }
-
+	  // sql = sql.replace(/'(:\w+)'/g, "$1");
+		console.log(sql);
     options = Utils._.extend(Utils._.clone(this.options.query), options);
     options = Utils._.defaults(options, {
       logging: this.options.hasOwnProperty('logging') ? this.options.logging : console.log
@@ -134,7 +140,7 @@ var Sequelize=require("./lib/sequelize")
     if (this.test.$trackRunningQueries) {
       this.test.$runningQueries++;
     }
-
+    
     return Promise.resolve(
       options.transaction ? options.transaction.connection : self.connectionManager.getConnection(options)
     ).then(function (connection) {
