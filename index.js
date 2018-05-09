@@ -115,7 +115,6 @@ var Sequelize=require("./lib/sequelize")
       }
     }
 	  // sql = sql.replace(/'(:\w+)'/g, "$1");
-		console.log(sql);
     options = Utils._.extend(Utils._.clone(this.options.query), options);
     options = Utils._.defaults(options, {
       logging: this.options.hasOwnProperty('logging') ? this.options.logging : console.log
